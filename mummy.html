@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Happy Birthday Mummy!</title>
+  <style>
+    body {
+      background: linear-gradient(135deg, #ffe0ec 0%, #f9f6ff 100%);
+      min-height: 100vh;
+      margin: 0;
+      font-family: 'Segoe UI', Arial, sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .bday-card {
+      background: #fff;
+      border-radius: 18px;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.10);
+      padding: 36px 32px 28px 32px;
+      max-width: 370px;
+      text-align: center;
+      position: relative;
+    }
+    .bday-card img {
+      width: 120px;
+      height: 120px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 4px solid #ffb6d5;
+      margin-bottom: 18px;
+      box-shadow: 0 2px 8px rgba(255,182,213,0.18);
+    }
+    .bday-card h1 {
+      color: #d72660;
+      font-size: 2rem;
+      margin: 0 0 10px 0;
+      letter-spacing: 1px;
+    }
+    .bday-card p {
+      color: #444;
+      font-size: 1.08rem;
+      margin: 10px 0 18px 0;
+      line-height: 1.6;
+    }
+    .bday-card .bday-link {
+      display: inline-block;
+      margin-top: 12px;
+      padding: 10px 22px;
+      background: #ffb6d5;
+      color: #fff;
+      border-radius: 22px;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 1rem;
+      box-shadow: 0 2px 8px rgba(255,182,213,0.18);
+      transition: background 0.2s;
+    }
+    .bday-card .bday-link:hover {
+      background: #d72660;
+    }
+    .bday-card .emoji {
+      font-size: 1.6rem;
+      margin-bottom: 8px;
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <div class="bday-card">
+    <span class="emoji">🌸🎂💖</span>
+    <img src="C:\Users\bolli\OneDrive\Documents\mummy.jpg" alt="Mummy's Photo">
+    <h1>Happy Birthday Mummy!</h1>
+    <p>
+      Wishing you a day filled with love, laughter, and joy.<br>
+      You are my inspiration, my strength, and my sunshine.<br>
+      Thank you for your endless love and warm hugs.<br>
+      I love you Mummy! 💕
+    </p>
+    <a class="bday-link" href="" target="_blank">
+      🎁 Click here for a special birthday surprise!
+      <div id="bday-slider-modal" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(255,255,255,0.98); z-index:9999; overflow:auto; align-items:center; justify-content:center;">
+        <div id="bday-slider-content" style="background:#fff; border-radius:28px; box-shadow:0 8px 32px rgba(0,0,0,0.18); max-width:600px; margin:40px auto; padding:48px 36px 36px 36px; position:relative; text-align:center; min-height:520px; display:flex; flex-direction:column; align-items:center; justify-content:center;">
+          <button id="close-bday-slider" style="position:absolute; top:18px; right:24px; background:none; border:none; font-size:2.2rem; color:#d72660; cursor:pointer;">&times;</button>
+          <div id="bday-slider-slides" style="width:100%; min-height:420px; display:flex; flex-direction:column; align-items:center; justify-content:center;">
+            <!-- Slides will be injected here -->
+          </div>
+          <div style="margin-top:28px;">
+            <button id="bday-slider-prev" style="background:#ffb6d5; color:#fff; border:none; border-radius:50%; width:54px; height:54px; font-size:1.7rem; margin-right:24px; cursor:pointer; box-shadow:0 2px 8px rgba(255,182,213,0.18);">&lt;</button>
+            <button id="bday-slider-next" style="background:#ffb6d5; color:#fff; border:none; border-radius:50%; width:54px; height:54px; font-size:1.7rem; cursor:pointer; box-shadow:0 2px 8px rgba(255,182,213,0.18);">&gt;</button>
+          </div>
+          <div id="bday-slider-dots" style="margin-top:18px;"></div>
+        </div>
+      </div>
+      <script>
+        // Slides data
+        const bdaySlides = [
+          {
+            emoji: "🌷👩‍👧‍👦🍰",
+            img: { src: "C:\\Users\\bolli\\OneDrive\\Documents\\daddy.jpg", alt: "Mummy Smiling", style: "width: 220px; border-radius: 18px; margin-bottom: 12px;" },
+            title: "Memories Together",
+            text: `From childhood giggles to heartfelt talks,<br>
+Every moment with you is a cherished memory.<br>
+Your kindness and wisdom light up our lives.<br>
+May your birthday be as wonderful as you are!`
+          },
+          {
+            emoji: "🌼🫶🎉",
+            img: { src: "C:\\Users\\bolli\\OneDrive\\Documents\\family.jpg", alt: "Family Photo", style: "width: 180px; border-radius: 18px; margin-bottom: 12px;" },
+            title: "With Love from All of Us",
+            text: `We are so grateful for your love and care.<br>
+You make our family complete and our home happy.<br>
+Here's to many more birthdays, laughter, and hugs.<br>
+Happy Birthday, dearest Mummy!`
+          },
+          {
+            emoji: "💐🌟🥰",
+            img: { src: "C:\\Users\\bolli\\OneDrive\\Documents\\ammu papa.jpg", alt: "Mummy with Flowers", style: "width: 100px; border-radius: 18px; margin-bottom: 12px;" },
+            title: "Special Moments",
+            text: `Your gentle words and caring heart<br>
+Make every day brighter and every moment sweeter.<br>
+Thank you for being the best mum anyone could wish for.<br>
+Happy Birthday, with all my love!`
+          },
+          {
+            emoji: "👑💝🌹",
+            img: { src: "C:\\Users\\bolli\\OneDrive\\Documents\\mummy.jpg", alt: "Mummy Queen", style: "width: 220px; border-radius: 18px; margin-bottom: 12px;" },
+            title: "Queen of Our Hearts",
+            text: `You are the queen who rules with love and grace.<br>
+Your smile lights up our world.<br>
+Wishing you a birthday as beautiful as your soul.<br>
+Love you forever, Mummy!`
+          }
+        ];
+
+        let bdayCurrentSlide = 0;
+
+        function renderBdaySlide(idx) {
+          const slide = bdaySlides[idx];
+          return `
+            <span class="emoji" style="font-size:2.1rem; margin-bottom:14px; display:block;">${slide.emoji}</span>
+            <img src="${slide.img.src}" alt="${slide.img.alt}" style="${slide.img.style}">
+            <div style="font-size:1.25em; color:#d72660; margin-bottom:12px; font-weight:bold;">
+              ${slide.title}
+            </div>
+            <div style="font-size:1.08em; color:#444;">
+              ${slide.text}
+            </div>
+          `;
+        }
+
+        function updateBdaySlider() {
+          const slidesDiv = document.getElementById('bday-slider-slides');
+          slidesDiv.innerHTML = renderBdaySlide(bdayCurrentSlide);
+
+          // Dots
+          const dotsDiv = document.getElementById('bday-slider-dots');
+          dotsDiv.innerHTML = bdaySlides.map((_, i) =>
+            `<span style="display:inline-block;width:14px;height:14px;border-radius:50%;margin:0 6px;cursor:pointer;background:${i===bdayCurrentSlide?'#d72660':'#ffb6d5'};" data-idx="${i}"></span>`
+          ).join('');
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+          var bdayLink = document.querySelector('.bday-link');
+          var modal = document.getElementById('bday-slider-modal');
+          var closeBtn = document.getElementById('close-bday-slider');
+          var prevBtn = document.getElementById('bday-slider-prev');
+          var nextBtn = document.getElementById('bday-slider-next');
+          var dotsDiv = document.getElementById('bday-slider-dots');
+
+          if (bdayLink && modal) {
+            bdayLink.addEventListener('click', function(e) {
+              e.preventDefault();
+              modal.style.display = 'flex';
+              bdayCurrentSlide = 0;
+              updateBdaySlider();
+              bdayLink.removeAttribute('href');
+              bdayLink.removeAttribute('target');
+            }, { once: true });
+          }
+          if (closeBtn && modal) {
+            closeBtn.addEventListener('click', function() {
+              modal.style.display = 'none';
+            });
+          }
+          // Optional: Close modal when clicking outside the content
+          if (modal) {
+            modal.addEventListener('click', function(event) {
+              if (event.target === modal) {
+                modal.style.display = 'none';
+              }
+            });
+          }
+          if (prevBtn) {
+            prevBtn.addEventListener('click', function() {
+              bdayCurrentSlide = (bdayCurrentSlide - 1 + bdaySlides.length) % bdaySlides.length;
+              updateBdaySlider();
+            });
+          }
+          if (nextBtn) {
+            nextBtn.addEventListener('click', function() {
+              bdayCurrentSlide = (bdayCurrentSlide + 1) % bdaySlides.length;
+              updateBdaySlider();
+            });
+          }
+          if (dotsDiv) {
+            dotsDiv.addEventListener('click', function(e) {
+              if (e.target && e.target.dataset.idx !== undefined) {
+                bdayCurrentSlide = parseInt(e.target.dataset.idx);
+                updateBdaySlider();
+              }
+            });
+          }
+        });
+      </script>
+      </a>
+  </div>
+</body>
+  </p>
+</div>
+</html>
+<div class="bday-card" style="margin-top: 32px;">
+  <span class="emoji">🌷👩‍👧‍👦🍰</span>
+  <img src="C:\Users\bolli\OneDrive\Documents\daddy.jpg" alt="Mummy Smiling" style="width: 220px; border-radius: 18px; margin-bottom: 12px;">
+  <h2>Memories Together</h2>
+  <p>
+    From childhood giggles to heartfelt talks,<br>
+    Every moment with you is a cherished memory.<br>
+    Your kindness and wisdom light up our lives.<br>
+    May your birthday be as wonderful as you are!
+  </p>
+</div>
+<div class="bday-card" style="margin-top: 32px;">
+  <span class="emoji">🌼🫶🎉</span>
+  <img src="C:\Users\bolli\OneDrive\Documents\family.jpg" alt="Family Photo" style="width: 180px; border-radius: 18px; margin-bottom: 12px;">
+  <h2>With Love from All of Us</h2>
+  <p>
+    We are so grateful for your love and care.<br>
+    You make our family complete and our home happy.<br>
+    Here's to many more birthdays, laughter, and hugs.<br>
+    Happy Birthday, dearest Mummy!
+  </p>
+</div>
+<div class="bday-card" style="margin-top: 32px;">
+  <span class="emoji">💐🌟🥰</span>
+  <img src="C:\Users\bolli\OneDrive\Documents\ammu papa.jpg" alt="Mummy with Flowers" style="width: 100px; border-radius: 18px; margin-bottom: 12px;">
+  <h2>Special Moments</h2>
+  <p>
+    Your gentle words and caring heart<br>
+    Make every day brighter and every moment sweeter.<br>
+    Thank you for being the best mum anyone could wish for.<br>
+    Happy Birthday, with all my love!
+  </p>
+</div>
+<div class="bday-card" style="margin-top: 32px;">
+  <span class="emoji">👑💝🌹</span>
+  <img src="C:\Users\bolli\OneDrive\Documents\mummy.jpg" alt="Mummy Queen" style="width: 220px; border-radius: 18px; margin-bottom: 12px;">
+  <h2>Queen of Our Hearts</h2>
+  <p>
+    You are the queen who rules with love and grace.<br>
+    Your smile lights up our world.<br>
+    Wishing you a birthday as beautiful as your soul.<br>
+    Love you forever, Mummy!
+  </p>
+</div>
+<p style="text-align: center; margin-top: 24px; font-size: 1.1em;">
+</p>
+
